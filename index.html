@@ -1,13 +1,579 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home / X</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons (Material Symbols Rounded for a clean look closer to X's icons) -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        twitter: {
+                            blue: '#1d9bf0',
+                            black: '#000000',
+                            dark: '#16181c',
+                            gray: '#71767b',
+                            lightGray: '#eff3f4',
+                            dim: '#202327',
+                            hover: 'rgba(239, 243, 244, 0.1)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar for a premium feel */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        body {
+            background-color: #000000;
+            color: #e7e9ea;
+        }
+    </style>
 </head>
 
-<body>
+<body class="antialiased overflow-y-scroll">
+
+    <div class="container mx-auto h-screen flex xl:max-w-[1265px]">
+        <!-- Left Sidebar -->
+        <header class="hidden sm:flex flex-col h-full w-[88px] xl:w-[275px] fixed px-2 xl:px-0 z-50">
+            <div class="flex flex-col h-full justify-between pb-4">
+                <div>
+                    <!-- Logo -->
+                    <div
+                        class="p-3 w-fit hover:bg-twitter-dim rounded-full cursor-pointer transition-colors duration-200 mb-1 xl:ml-1">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-[26px] h-[26px] fill-white text-white">
+                            <g>
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                </path>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Nav Links -->
+                    <nav class="flex flex-col items-center xl:items-start gap-1">
+                        <!-- Home (Active) -->
+                        <a href="#"
+                            class="group flex items-center gap-4 p-3 w-fit hover:bg-twitter-dim rounded-full transition-colors duration-200">
+                            <span class="material-symbols-rounded text-[28px] font-semibold">home</span>
+                            <span class="hidden xl:block text-xl font-bold mr-4">Home</span>
+                        </a>
+
+                        <!-- Explore -->
+                        <a href="#"
+                            class="group flex items-center gap-4 p-3 w-fit hover:bg-twitter-dim rounded-full transition-colors duration-200">
+                            <span class="material-symbols-rounded text-[28px]">search</span>
+                            <span class="hidden xl:block text-xl text-[#e7e9ea] mr-4">Explore</span>
+                        </a>
+
+                        <!-- Notifications -->
+                        <a href="#"
+                            class="group flex items-center gap-4 p-3 w-fit hover:bg-twitter-dim rounded-full transition-colors duration-200">
+                            <span class="material-symbols-rounded text-[28px]">notifications</span>
+                            <span class="hidden xl:block text-xl text-[#e7e9ea] mr-4">Notifications</span>
+                        </a>
+
+                        <!-- Messages -->
+                        <a href="#"
+                            class="group flex items-center gap-4 p-3 w-fit hover:bg-twitter-dim rounded-full transition-colors duration-200">
+                            <span class="material-symbols-rounded text-[28px]">mail</span>
+                            <span class="hidden xl:block text-xl text-[#e7e9ea] mr-4">Messages</span>
+                        </a>
+
+                        <!-- Grok -->
+                        <a href="#"
+                            class="group flex items-center gap-4 p-3 w-fit hover:bg-twitter-dim rounded-full transition-colors duration-200">
+                            <span class="material-symbols-rounded text-[28px]">smart_toy</span>
+                            <span class="hidden xl:block text-xl text-[#e7e9ea] mr-4">Grok</span>
+                        </a>
+
+                        <!-- Lists/Communities/Premium (Hidden on smaller for brevity, shown as examples) -->
+                        <a href="#"
+                            class="group flex items-center gap-4 p-3 w-fit hover:bg-twitter-dim rounded-full transition-colors duration-200">
+                            <span class="material-symbols-rounded text-[28px]">group</span>
+                            <span class="hidden xl:block text-xl text-[#e7e9ea] mr-4">Communities</span>
+                        </a>
+
+                        <a href="#"
+                            class="group flex items-center gap-4 p-3 w-fit hover:bg-twitter-dim rounded-full transition-colors duration-200">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-[26px] h-[26px] fill-white">
+                                <g>
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                    </path>
+                                </g>
+                            </svg>
+                            <span class="hidden xl:block text-xl text-[#e7e9ea] mr-4">Premium</span>
+                        </a>
+
+                        <!-- Profile -->
+                        <a href="#"
+                            class="group flex items-center gap-4 p-3 w-fit hover:bg-twitter-dim rounded-full transition-colors duration-200">
+                            <span class="material-symbols-rounded text-[28px]">person</span>
+                            <span class="hidden xl:block text-xl text-[#e7e9ea] mr-4">Profile</span>
+                        </a>
+
+                        <!-- More -->
+                        <a href="#"
+                            class="group flex items-center gap-4 p-3 w-fit hover:bg-twitter-dim rounded-full transition-colors duration-200">
+                            <span
+                                class="material-symbols-rounded text-[28px] border border-white rounded-full p-0.5 text-[22px]">more_horiz</span>
+                            <span class="hidden xl:block text-xl text-[#e7e9ea] mr-4">More</span>
+                        </a>
+                    </nav>
+
+                    <!-- Post Button -->
+                    <button
+                        class="mt-4 bg-twitter-blue hover:bg-[#1a8cd8] text-white rounded-full p-4 xl:px-8 xl:py-3.5 w-fit xl:w-[90%] shadow-lg transition-colors duration-200 flex items-center justify-center">
+                        <span class="block xl:hidden">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-6 h-6 fill-white">
+                                <g>
+                                    <path
+                                        d="M23 3c-6.62-.1-10.38 2.421-13.05 6.03C7.29 12.61 6 17.331 6 22h2c0-1.007.07-2.012.19-3H12c4.1 0 7.48-3.082 7.94-7.054C22.79 10.147 23.17 6.359 23 3zm-7 8h-1.5v2H16c.63-.016 1.2-.08 1.72-.188C16.95 15.24 14.68 17 12 17H8.55c.57-2.512 1.57-4.851 3-6.78 2.16-2.912 5.29-4.911 9.45-5.187C20.95 8.079 19.9 11 16 11zM4 9V6H1V4h3V1h2v3h3v2H6v3H4z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </span>
+                        <span class="hidden xl:block font-bold text-lg">Post</span>
+                    </button>
+                </div>
+
+                <!-- User Profile -->
+                <div
+                    class="hover:bg-twitter-dim p-3 rounded-full cursor-pointer transition-colors duration-200 flex items-center justify-center xl:justify-between w-fit xl:w-full gap-3 group">
+                    <img src="https://ui-avatars.com/api/?name=User&background=random" alt="Avatar"
+                        class="w-10 h-10 rounded-full">
+                    <div class="hidden xl:block flex-1 leading-5">
+                        <p class="font-bold text-[15px]">User</p>
+                        <p class="text-twitter-gray text-[15px]">@user</p>
+                    </div>
+                    <span class="material-symbols-rounded hidden xl:block ml-auto text-[20px]">more_horiz</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 sm:ml-[88px] xl:ml-[275px] min-h-screen border-x border-twitter-dim max-w-[600px] w-full">
+            <!-- Sticky Header -->
+            <div class="sticky top-0 z-40 bg-black/65 backdrop-blur-md border-b border-twitter-dim">
+                <div class="hidden sm:block px-4 py-3 text-xl font-bold">Home</div>
+                <div class="sm:hidden flex justify-between items-center px-4 py-3">
+                    <img src="https://ui-avatars.com/api/?name=User&background=random" alt="Avatar"
+                        class="w-8 h-8 rounded-full">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-6 h-6 fill-white">
+                        <g>
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                            </path>
+                        </g>
+                    </svg>
+                    <span class="material-symbols-rounded">settings</span>
+                </div>
+
+                <div class="flex text-center font-medium text-twitter-gray h-[53px]">
+                    <div
+                        class="flex-1 hover:bg-twitter-hover cursor-pointer transition-colors relative flex items-center justify-center">
+                        <span class="text-white relative h-full flex items-center px-2">
+                            For you
+                            <div class="absolute bottom-0 h-[4px] w-full bg-twitter-blue rounded-full"></div>
+                        </span>
+                    </div>
+                    <div
+                        class="flex-1 hover:bg-twitter-hover cursor-pointer transition-colors flex items-center justify-center">
+                        <span class="px-2">Following</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tweet Composer -->
+            <div class="border-b border-twitter-dim p-4 hidden sm:flex gap-4">
+                <img src="https://ui-avatars.com/api/?name=User&background=random" alt="Avatar"
+                    class="w-10 h-10 rounded-full cursor-pointer hover:opacity-90 transition-opacity">
+                <div class="flex-1 flex flex-col">
+                    <textarea
+                        class="w-full bg-transparent text-xl placeholder-twitter-gray outline-none resize-none overflow-hidden pb-3 border-b border-twitter-dim focus:border-twitter-dim/0"
+                        placeholder="What is happening?!"></textarea>
+
+                    <div class="flex justify-between items-center mt-3">
+                        <div class="flex gap-2 text-twitter-blue">
+                            <div class="p-2 hover:bg-twitter-blue/10 rounded-full cursor-pointer transition-colors">
+                                <span class="material-symbols-rounded text-[20px]">image</span>
+                            </div>
+                            <div class="p-2 hover:bg-twitter-blue/10 rounded-full cursor-pointer transition-colors">
+                                <span class="material-symbols-rounded text-[20px]">gif_box</span>
+                            </div>
+                            <div
+                                class="p-2 hover:bg-twitter-blue/10 rounded-full cursor-pointer transition-colors hidden sm:block">
+                                <span class="material-symbols-rounded text-[20px]">ballot</span>
+                            </div>
+                            <div class="p-2 hover:bg-twitter-blue/10 rounded-full cursor-pointer transition-colors">
+                                <span class="material-symbols-rounded text-[20px]">sentiment_satisfied</span>
+                            </div>
+                            <div
+                                class="p-2 hover:bg-twitter-blue/10 rounded-full cursor-pointer transition-colors hidden sm:block">
+                                <span class="material-symbols-rounded text-[20px]">calendar_month</span>
+                            </div>
+                            <div
+                                class="p-2 hover:bg-twitter-blue/10 rounded-full cursor-pointer transition-colors opacity-50">
+                                <span class="material-symbols-rounded text-[20px]">location_on</span>
+                            </div>
+                        </div>
+                        <button
+                            class="bg-twitter-blue text-white font-bold px-4 py-1.5 rounded-full hover:bg-[#1a8cd8] disabled:opacity-50 transition-colors shadow-md">Post</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feed Stream -->
+            <!-- Tweet 1 (Text + Image) -->
+            <article
+                class="border-b border-twitter-dim p-4 flex gap-3 hover:bg-twitter-dim/30 cursor-pointer transition-colors">
+                <img src="https://ui-avatars.com/api/?name=SpaceX&background=000&color=fff" alt="Avatar"
+                    class="w-10 h-10 rounded-full">
+                <div class="flex-1 min-w-0">
+                    <!-- Header -->
+                    <div class="flex justify-between items-center text-twitter-gray text-[15px]">
+                        <div class="flex items-center gap-1 truncate">
+                            <span class="font-bold text-white hover:underline truncate">SpaceX</span>
+                            <span class="material-symbols-rounded text-[16px] text-blue-400">verified</span>
+                            <span class="truncate">@SpaceX</span>
+                            <span>·</span>
+                            <span class="hover:underline flex-shrink-0">2h</span>
+                        </div>
+                        <span
+                            class="material-symbols-rounded text-lg hover:text-twitter-blue hover:bg-twitter-blue/10 rounded-full p-1 transition-colors">more_horiz</span>
+                    </div>
+                    <!-- Content -->
+                    <p class="text-[15px] sm:text-[16px] text-[#e7e9ea] mt-0.5 whitespace-pre-line">Starship flight 4
+                        complete! 🚀</p>
+
+                    <!-- Image -->
+                    <div class="mt-3 rounded-2xl overflow-hidden border border-twitter-dim">
+                        <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=2670&auto=format&fit=crop"
+                            class="w-full h-full object-cover max-h-[500px]" alt="Rocket">
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex justify-between mt-3 max-w-md text-twitter-gray">
+                        <!-- Reply -->
+                        <div
+                            class="group flex items-center gap-1 hover:text-twitter-blue cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-twitter-blue/10 transition-colors">
+                                <span class="material-symbols-rounded text-[18px]">chat_bubble</span>
+                            </div>
+                            <span class="text-xs group-hover:text-twitter-blue">2.5K</span>
+                        </div>
+                        <!-- Repost -->
+                        <div
+                            class="group flex items-center gap-1 hover:text-[#00ba7c] cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-[#00ba7c]/10 transition-colors">
+                                <span class="material-symbols-rounded text-[18px]">repeat</span>
+                            </div>
+                            <span class="text-xs group-hover:text-[#00ba7c]">14K</span>
+                        </div>
+                        <!-- Like -->
+                        <div
+                            class="group flex items-center gap-1 hover:text-[#f91880] cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-[#f91880]/10 transition-colors">
+                                <span class="material-symbols-rounded text-[18px]">favorite</span>
+                            </div>
+                            <span class="text-xs group-hover:text-[#f91880]">156K</span>
+                        </div>
+                        <!-- View -->
+                        <div
+                            class="group flex items-center gap-1 hover:text-twitter-blue cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-twitter-blue/10 transition-colors">
+                                <span class="material-symbols-rounded text-[18px]">bar_chart</span>
+                            </div>
+                            <span class="text-xs group-hover:text-twitter-blue">4.1M</span>
+                        </div>
+                        <!-- Share -->
+                        <div
+                            class="group flex items-center gap-1 hover:text-twitter-blue cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-twitter-blue/10 transition-colors">
+                                <span class="material-symbols-rounded text-[18px]">ios_share</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tweet 2 (Text Only) -->
+            <article
+                class="border-b border-twitter-dim p-4 flex gap-3 hover:bg-twitter-dim/30 cursor-pointer transition-colors">
+                <img src="https://ui-avatars.com/api/?name=Elon+Musk&background=000&color=fff" alt="Avatar"
+                    class="w-10 h-10 rounded-full">
+                <div class="flex-1 min-w-0">
+                    <!-- Header -->
+                    <div class="flex justify-between items-center text-twitter-gray text-[15px]">
+                        <div class="flex items-center gap-1 truncate">
+                            <span class="font-bold text-white hover:underline truncate">Elon Musk</span>
+                            <span class="material-symbols-rounded text-[16px] text-blue-400">verified</span>
+                            <span class="truncate">@elonmusk</span>
+                            <span>·</span>
+                            <span class="hover:underline flex-shrink-0">5h</span>
+                        </div>
+                        <span
+                            class="material-symbols-rounded text-lg hover:text-twitter-blue hover:bg-twitter-blue/10 rounded-full p-1 transition-colors">more_horiz</span>
+                    </div>
+                    <!-- Content -->
+                    <p class="text-[15px] sm:text-[16px] text-[#e7e9ea] mt-0.5 whitespace-pre-line">True.</p>
+
+                    <!-- Actions -->
+                    <div class="flex justify-between mt-3 max-w-md text-twitter-gray">
+                        <div
+                            class="group flex items-center gap-1 hover:text-twitter-blue cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-twitter-blue/10 transition-colors"><span
+                                    class="material-symbols-rounded text-[18px]">chat_bubble</span></div><span
+                                class="text-xs group-hover:text-twitter-blue">12K</span>
+                        </div>
+                        <div
+                            class="group flex items-center gap-1 hover:text-[#00ba7c] cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-[#00ba7c]/10 transition-colors"><span
+                                    class="material-symbols-rounded text-[18px]">repeat</span></div><span
+                                class="text-xs group-hover:text-[#00ba7c]">8K</span>
+                        </div>
+                        <div
+                            class="group flex items-center gap-1 hover:text-[#f91880] cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-[#f91880]/10 transition-colors"><span
+                                    class="material-symbols-rounded text-[18px]">favorite</span></div><span
+                                class="text-xs group-hover:text-[#f91880]">89K</span>
+                        </div>
+                        <div
+                            class="group flex items-center gap-1 hover:text-twitter-blue cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-twitter-blue/10 transition-colors"><span
+                                    class="material-symbols-rounded text-[18px]">bar_chart</span></div><span
+                                class="text-xs group-hover:text-twitter-blue">10M</span>
+                        </div>
+                        <div
+                            class="group flex items-center gap-1 hover:text-twitter-blue cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-twitter-blue/10 transition-colors"><span
+                                    class="material-symbols-rounded text-[18px]">ios_share</span></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tweet 3 (Code Snippet/Dev) -->
+            <article
+                class="border-b border-twitter-dim p-4 flex gap-3 hover:bg-twitter-dim/30 cursor-pointer transition-colors">
+                <img src="https://ui-avatars.com/api/?name=Dev&background=random" alt="Avatar"
+                    class="w-10 h-10 rounded-full">
+                <div class="flex-1 min-w-0">
+                    <!-- Header -->
+                    <div class="flex justify-between items-center text-twitter-gray text-[15px]">
+                        <div class="flex items-center gap-1 truncate">
+                            <span class="font-bold text-white hover:underline truncate">Web Dev</span>
+                            <span class="truncate">@webdev_guru</span>
+                            <span>·</span>
+                            <span class="hover:underline flex-shrink-0">8h</span>
+                        </div>
+                        <span
+                            class="material-symbols-rounded text-lg hover:text-twitter-blue hover:bg-twitter-blue/10 rounded-full p-1 transition-colors">more_horiz</span>
+                    </div>
+                    <!-- Content -->
+                    <p class="text-[15px] sm:text-[16px] text-[#e7e9ea] mt-0.5 whitespace-pre-line">Building a Twitter
+                        clone with Tailwind CSS is surprisingly fast! ⚡️
+
+                        The utility-first approach makes handling responsiveness and dark mode a breeze. #webdev
+                        #tailwindcss</p>
+
+                    <!-- Actions -->
+                    <div class="flex justify-between mt-3 max-w-md text-twitter-gray">
+                        <div
+                            class="group flex items-center gap-1 hover:text-twitter-blue cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-twitter-blue/10 transition-colors"><span
+                                    class="material-symbols-rounded text-[18px]">chat_bubble</span></div><span
+                                class="text-xs group-hover:text-twitter-blue">42</span>
+                        </div>
+                        <div
+                            class="group flex items-center gap-1 hover:text-[#00ba7c] cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-[#00ba7c]/10 transition-colors"><span
+                                    class="material-symbols-rounded text-[18px]">repeat</span></div><span
+                                class="text-xs group-hover:text-[#00ba7c]">15</span>
+                        </div>
+                        <div
+                            class="group flex items-center gap-1 hover:text-[#f91880] cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-[#f91880]/10 transition-colors"><span
+                                    class="material-symbols-rounded text-[18px]">favorite</span></div><span
+                                class="text-xs group-hover:text-[#f91880]">300</span>
+                        </div>
+                        <div
+                            class="group flex items-center gap-1 hover:text-twitter-blue cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-twitter-blue/10 transition-colors"><span
+                                    class="material-symbols-rounded text-[18px]">bar_chart</span></div><span
+                                class="text-xs group-hover:text-twitter-blue">1.2K</span>
+                        </div>
+                        <div
+                            class="group flex items-center gap-1 hover:text-twitter-blue cursor-pointer transition-colors">
+                            <div class="p-2 rounded-full group-hover:bg-twitter-blue/10 transition-colors"><span
+                                    class="material-symbols-rounded text-[18px]">ios_share</span></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="hidden lg:block w-[350px] pl-8 py-1 h-screen sticky top-0 border-l border-twitter-dim/0">
+            <!-- Search -->
+            <div class="fixed top-0 bg-black z-40 py-2 w-[350px]">
+                <div class="relative group">
+                    <input type="text" placeholder="Search"
+                        class="w-full bg-[#202327] rounded-full py-3 pl-12 pr-4 outline-none focus:bg-black focus:border focus:border-twitter-blue text-[#e7e9ea] transition-colors placeholder-[#71767b]">
+                    <span
+                        class="material-symbols-rounded absolute left-4 top-1/2 -translate-y-1/2 text-[#71767b] group-focus-within:text-twitter-blue">search</span>
+                </div>
+            </div>
+
+            <div class="h-screen overflow-y-auto pt-16 pb-64 no-scrollbar">
+                <!-- Subscribe Card -->
+                <div class="bg-[#16181c] rounded-2xl mb-4 py-3 px-4 flex flex-col gap-2">
+                    <h2 class="font-extrabold text-xl">Subscribe to Premium</h2>
+                    <p class="text-[15px] font-medium leading-5">Subscribe to unlock new features and if eligible,
+                        receive a share of ads revenue.</p>
+                    <button
+                        class="bg-twitter-blue hover:bg-[#1a8cd8] text-white font-bold px-4 py-2 rounded-full w-fit transition-colors mt-1">Subscribe</button>
+                </div>
+
+                <!-- Trends -->
+                <div class="bg-[#16181c] rounded-2xl mb-4 py-3">
+                    <h2 class="font-extrabold text-xl px-4 py-1.5 mb-2">What’s happening</h2>
+
+                    <!-- Item 1 -->
+                    <div class="hover:bg-twitter-dim/50 px-4 py-2.5 cursor-pointer transition-colors relative">
+                        <div class="flex justify-between text-xs text-twitter-gray">
+                            <span>Technology · Trending</span>
+                            <span
+                                class="material-symbols-rounded text-base p-1 hover:text-twitter-blue hover:bg-twitter-blue/10 rounded-full -mr-1.5 transition-colors">more_horiz</span>
+                        </div>
+                        <p class="font-bold text-[15px] pt-0.5">Google Gemini</p>
+                        <span class="text-xs text-twitter-gray">150K posts</span>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="hover:bg-twitter-dim/50 px-4 py-2.5 cursor-pointer transition-colors relative">
+                        <div class="flex justify-between text-xs text-twitter-gray">
+                            <span>Sports · Trending</span>
+                            <span
+                                class="material-symbols-rounded text-base p-1 hover:text-twitter-blue hover:bg-twitter-blue/10 rounded-full -mr-1.5 transition-colors">more_horiz</span>
+                        </div>
+                        <p class="font-bold text-[15px] pt-0.5">Formula 1</p>
+                        <span class="text-xs text-twitter-gray">52K posts</span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="hover:bg-twitter-dim/50 px-4 py-2.5 cursor-pointer transition-colors relative">
+                        <div class="flex justify-between text-xs text-twitter-gray">
+                            <span>Entertainment · Trending</span>
+                            <span
+                                class="material-symbols-rounded text-base p-1 hover:text-twitter-blue hover:bg-twitter-blue/10 rounded-full -mr-1.5 transition-colors">more_horiz</span>
+                        </div>
+                        <p class="font-bold text-[15px] pt-0.5">#HouseOfTheDragon</p>
+                        <span class="text-xs text-twitter-gray">12K posts</span>
+                    </div>
+
+                    <div
+                        class="hover:bg-twitter-dim/50 px-4 py-3 cursor-pointer text-twitter-blue hover:text-[#1a8cd8] transition-colors text-[15px]">
+                        Show more</div>
+                </div>
+
+                <!-- Who to follow -->
+                <div class="bg-[#16181c] rounded-2xl mb-4 py-3">
+                    <h2 class="font-extrabold text-xl px-4 py-1.5 mb-2">Who to follow</h2>
+
+                    <!-- Item 1 -->
+                    <div
+                        class="hover:bg-twitter-dim/50 px-4 py-3 cursor-pointer flex items-center justify-between gap-2 transition-colors">
+                        <div class="flex gap-2 truncate">
+                            <img src="https://ui-avatars.com/api/?name=Vercel&background=000&color=fff"
+                                class="rounded-full w-10 h-10 object-cover">
+                            <div class="truncate leading-5">
+                                <div class="flex items-center gap-1">
+                                    <p class="font-bold truncate">Vercel</p>
+                                    <span class="material-symbols-rounded text-[14px] text-yellow-400">verified</span>
+                                </div>
+                                <p class="text-twitter-gray truncate text-[14px]">@vercel</p>
+                            </div>
+                        </div>
+                        <button
+                            class="bg-white text-black font-bold px-4 py-1.5 rounded-full text-sm hover:bg-[#eff3f4] transition-colors">Follow</button>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div
+                        class="hover:bg-twitter-dim/50 px-4 py-3 cursor-pointer flex items-center justify-between gap-2 transition-colors">
+                        <div class="flex gap-2 truncate">
+                            <img src="https://ui-avatars.com/api/?name=Tailwind&background=38bdf8&color=fff"
+                                class="rounded-full w-10 h-10 object-cover">
+                            <div class="truncate leading-5">
+                                <div class="flex items-center gap-1">
+                                    <p class="font-bold truncate">Tailwind CSS</p>
+                                    <span class="material-symbols-rounded text-[14px] text-yellow-400">verified</span>
+                                </div>
+                                <p class="text-twitter-gray truncate text-[14px]">@tailwindcss</p>
+                            </div>
+                        </div>
+                        <button
+                            class="bg-white text-black font-bold px-4 py-1.5 rounded-full text-sm hover:bg-[#eff3f4] transition-colors">Follow</button>
+                    </div>
+
+                    <div
+                        class="hover:bg-twitter-dim/50 px-4 py-3 cursor-pointer text-twitter-blue hover:text-[#1a8cd8] transition-colors text-[15px]">
+                        Show more</div>
+                </div>
+
+                <!-- Footer -->
+                <div class="px-4 text-[13px] text-twitter-gray leading-5 flex flex-wrap gap-x-3 gap-y-1">
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Cookie Policy</a>
+                    <a href="#" class="hover:underline">Accessibility</a>
+                    <a href="#" class="hover:underline">Ads info</a>
+                    <div class="flex items-center gap-1 hover:underline cursor-pointer">
+                        <span>More</span>
+                        <span class="material-symbols-rounded text-[14px]">more_horiz</span>
+                    </div>
+                </div>
+                <p class="px-4 mt-1 text-[13px] text-twitter-gray">© 2026 X Corp.</p>
+            </div>
+        </aside>
+    </div>
 
 </body>
 
